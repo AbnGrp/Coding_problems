@@ -22,3 +22,16 @@ def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
             if int(employee.loc[i,"salary"])>int(employee.loc[int(employee.loc[i,"managerId"])-1,"salary"]):
                return employee[employee["name"]==employee.loc[i,"name"]]
 '''
+
+#Return the difference between the min and the max element on a list
+""" 
+def max_diff(lst):
+    if len(lst)<=1:
+        return 0
+    else:
+        minimal=min(lst)
+        maximal=max(lst)
+        return maximal-minimal """
+
+#Track the queen
+#https://www.codewars.com/kata/5aa1031a7c7a532be30000e5/train/python
