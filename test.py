@@ -1,4 +1,6 @@
+#Find the  employees that are earning more than their managers
 #https://leetcode.com/problems/employees-earning-more-than-their-managers/description/?lang=pythondata
+
 '''
 def find_employees(df):
     l=[]
@@ -24,6 +26,7 @@ def find_employees(employee: pd.DataFrame) -> pd.DataFrame:
 '''
 
 #Return the difference between the min and the max element on a list
+
 """ 
 def max_diff(lst):
     if len(lst)<=1:
@@ -33,5 +36,21 @@ def max_diff(lst):
         maximal=max(lst)
         return maximal-minimal """
 
-#Track the queen
-#https://www.codewars.com/kata/5aa1031a7c7a532be30000e5/train/python
+#Find repeated emails
+#https://leetcode.com/problems/duplicate-emails/?lang=pythondata
+
+""" import pandas as pd
+from collections import Counter
+
+def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
+    l=[]
+    d=Counter(person["email"])
+    for i,j in d.items():
+        if j>1:
+            l.append(i)
+    for email in l:
+        return person[person["email"]==email] """
+
+
+
+
