@@ -51,6 +51,29 @@ def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
     for email in l:
         return person[person["email"]==email] """
 
+#Creating a spiral box
+#https://www.codewars.com/kata/63b84f54693cb10065687ae5/solutions
 
+def create_box(m, n):
+    # Create an empty 2D list with dimensions m x n
+    matrix = [[0] * m for _ in range(n)]
+    
+    # Fill the first and last row with 1s
+    for i in range(m):
+        matrix[0][i] = 1
+        matrix[n-1][i] = 1
+        
+    # Fill the first and last column with 1s
+    for i in range(n):
+        matrix[i][0] = 1
+        matrix[i][m-1] = 1
+        
+    # Fill in the remaining values
+    for i in range(1, n-1):
+        for j in range(1, m-1):
+            val = min(i, j, n-i-1, m-j-1) + 1
+            matrix[i][j] = val
+    
+    return matrix
 
 
