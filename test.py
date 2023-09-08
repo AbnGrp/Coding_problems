@@ -54,7 +54,7 @@ def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
 #Creating a spiral box
 #https://www.codewars.com/kata/63b84f54693cb10065687ae5/solutions
 
-def create_box(m, n):
+""" def create_box(m, n):
     # Create an empty 2D list with dimensions m x n
     matrix = [[0] * m for _ in range(n)]
     
@@ -74,6 +74,15 @@ def create_box(m, n):
             val = min(i, j, n-i-1, m-j-1) + 1
             matrix[i][j] = val
     
-    return matrix
+    return matrix """
 
+""" #https://leetcode.com/problems/customers-who-never-order/?lang=pythondata
+#Return customers that haven't order anything
 
+import pandas as pd
+
+def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    customers.drop(index=list(orders["customerId"]))
+    return customers["name"]
+
+ """
