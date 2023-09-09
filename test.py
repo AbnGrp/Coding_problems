@@ -86,3 +86,17 @@ def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFram
     return customers["name"]
 
  """
+#Target sum
+
+""" def two_sum(numbers, target):
+    if target in numbers and 0 in numbers:
+        return (numbers.index(target),numbers.index(0))
+    else:
+        for i in range(len(numbers)-1):
+            for j in range(i+1,len(numbers)):
+                pointer1=numbers[i]
+                pointer2=numbers[j]
+                if pointer1+pointer2==target:
+                    return (i,j)
+                else:
+                    pass """
