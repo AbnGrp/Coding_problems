@@ -100,3 +100,22 @@ def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFram
                     return (i,j)
                 else:
                     pass """
+
+#Big countries
+#https://leetcode.com/problems/big-countries/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def big_countries(world: pd.DataFrame) -> pd.DataFrame:
+    flt=(world["area"]>=3000000) | (world["population"]>=25000000)
+    return world[flt][["name","population","area"]] """
+
+
+#Low fat and recyclable products
+#https://leetcode.com/problems/recyclable-and-low-fat-products/submissions/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def find_products(products: pd.DataFrame) -> pd.DataFrame:
+    flt=(products["low_fats"]=='Y') & (products["recyclable"]=='Y')
+    return products[flt][["product_id"]] """
