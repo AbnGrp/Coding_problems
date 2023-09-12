@@ -119,3 +119,17 @@ def big_countries(world: pd.DataFrame) -> pd.DataFrame:
 def find_products(products: pd.DataFrame) -> pd.DataFrame:
     flt=(products["low_fats"]=='Y') & (products["recyclable"]=='Y')
     return products[flt][["product_id"]] """
+
+
+#Customers who never order
+#https://leetcode.com/problems/customers-who-never-order/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+""" 
+import pandas as pd
+
+def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    new_df=customers[~customers['id'].isin(orders['customerId'])]
+    new2_df=new_df[['name']].rename(columns={"name":'customers'})
+    return new2_df
+ """
+
+ 
