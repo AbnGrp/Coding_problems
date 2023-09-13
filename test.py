@@ -130,6 +130,26 @@ def find_customers(customers: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFram
     new_df=customers[~customers['id'].isin(orders['customerId'])]
     new2_df=new_df[['name']].rename(columns={"name":'customers'})
     return new2_df
- """
 
- 
+"""
+
+#Article views
+#https://leetcode.com/problems/article-views-i/solutions/3852944/pandas-my-sql-very-simple-with-approach-and-explanation/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def article_views(views: pd.DataFrame) -> pd.DataFrame:
+    view_own_article=views[views["author_id"]==views["viewer_id"]]
+    distinct_authors=view_own_article["author_id"].unique()
+    distinct_authors=sorted(distinct_authors)
+    f_df=pd.DataFrame({"id":distinct_authors})
+    return f_df """
+
+#Invalid tweets
+#https://leetcode.com/problems/invalid-tweets/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
+    flt=tweets["content"].str.len()>15
+    return tweets[flt][["tweet_id"]] """
