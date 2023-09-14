@@ -153,3 +153,16 @@ def article_views(views: pd.DataFrame) -> pd.DataFrame:
 def invalid_tweets(tweets: pd.DataFrame) -> pd.DataFrame:
     flt=tweets["content"].str.len()>15
     return tweets[flt][["tweet_id"]] """
+
+#Calculate bonus
+#https://leetcode.com/problems/calculate-special-bonus/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def calculate_special_bonus(employees: pd.DataFrame) -> pd.DataFrame:
+    employees['bonus'] = 0
+    
+    employees.loc[(employees['employee_id'] % 2 != 0) & (~employees['name'].str.startswith('M')), 'bonus'] = employees['salary']
+    result_df = employees[['employee_id', 'bonus']].sort_values(by='employee_id', ascending=True)
+    
+    return result_df """
