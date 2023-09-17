@@ -166,3 +166,16 @@ def calculate_special_bonus(employees: pd.DataFrame) -> pd.DataFrame:
     result_df = employees[['employee_id', 'bonus']].sort_values(by='employee_id', ascending=True)
     
     return result_df """
+
+#Fix names in a table
+#https://leetcode.com/problems/fix-names-in-a-table/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+""" 
+import pandas as pd
+
+def fix_names(users: pd.DataFrame) -> pd.DataFrame:
+    users["name"]=users["name"].str.capitalize()
+    return users.sort_values(by=["user_id"]) """
+
+#Invalid emails
+#https://leetcode.com/problems/find-users-with-valid-e-mails/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
