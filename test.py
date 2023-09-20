@@ -205,3 +205,13 @@ def find_patients(patients: pd.DataFrame) -> pd.DataFrame:
 def delete_duplicate_emails(person: pd.DataFrame) -> None:
   person.sort_values(by=["id"],ascending=True,inplace=True)
   person.drop_duplicates(subset=["email"],keep="first",inplace=True) """
+
+#Rearrange products table
+#https://leetcode.com/problems/rearrange-products-table/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def rearrange_products_table(products: pd.DataFrame) -> pd.DataFrame:
+    return pd.melt(
+        products, id_vars='product_id', var_name='store', value_name='price'
+    ).dropna() """
