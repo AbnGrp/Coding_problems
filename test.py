@@ -242,3 +242,7 @@ def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
     result.rename(columns={'event_date': 'first_login'}, inplace=True)
     
     return result """
+
+#Number of unique subjects taught by each teacher
+#https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
