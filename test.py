@@ -246,3 +246,8 @@ def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
 #Number of unique subjects taught by each teacher
 #https://leetcode.com/problems/number-of-unique-subjects-taught-by-each-teacher/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
 
+""" import pandas as pd
+
+result=teacher.groupby("teacher_id")["subject_id"].nunique().reset_index()
+result.rename(columns={"subject_id":"cnt"})
+return result """
