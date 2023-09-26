@@ -251,3 +251,13 @@ def game_analysis(activity: pd.DataFrame) -> pd.DataFrame:
 result=teacher.groupby("teacher_id")["subject_id"].nunique().reset_index()
 result.rename(columns={"subject_id":"cnt"})
 return result """
+
+#Classes with more than five students
+#https://leetcode.com/problems/classes-more-than-5-students/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
+    class_count=courses.groupby("class")["student"].count().reset_index()
+    result=class_count[class_count["student"]>=5][["class"]]
+    return result """
