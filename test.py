@@ -261,3 +261,13 @@ def find_classes(courses: pd.DataFrame) -> pd.DataFrame:
     class_count=courses.groupby("class")["student"].count().reset_index()
     result=class_count[class_count["student"]>=5][["class"]]
     return result """
+
+#Customer placing the largest number of orders
+#https://leetcode.com/problems/customer-placing-the-largest-number-of-orders/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def largest_orders(orders: pd.DataFrame) -> pd.DataFrame:
+    order_count=orders.groupby("customer_number")["order_number"].count().reset_index()
+    val=max(order_count["order_number"],default=0)
+    return order_count[order_count["order_number"]==val][["customer_number"]] """
