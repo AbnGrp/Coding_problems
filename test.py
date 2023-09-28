@@ -271,3 +271,22 @@ def largest_orders(orders: pd.DataFrame) -> pd.DataFrame:
     order_count=orders.groupby("customer_number")["order_number"].count().reset_index()
     val=max(order_count["order_number"],default=0)
     return order_count[order_count["order_number"]==val][["customer_number"]] """
+
+#Group sold products by the date
+#https://leetcode.com/problems/group-sold-products-by-the-date/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def categorize_products(activities: pd.DataFrame) -> pd.DataFrame:
+    return activities.groupby('sell_date')['product'].agg([('num_sold','nunique'),('products',lambda x: ','.join(sorted(x.unique())))]).reset_index()
+ """
+
+#Daily Leads and Partners
+#https://leetcode.com/problems/daily-leads-and-partners/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def daily_leads_and_partners(daily_sales: pd.DataFrame) -> pd.DataFrame:
+    new_c=daily_sales.groupby(["date_id","make_name"]).agg({"lead_id":"nunique","partner_id":"nunique"}).reset_index()
+    new_c.columns=["date_id","make_name","unique_leads","unique_partners"]
+    return new_c """
