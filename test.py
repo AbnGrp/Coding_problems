@@ -290,3 +290,22 @@ def daily_leads_and_partners(daily_sales: pd.DataFrame) -> pd.DataFrame:
     new_c=daily_sales.groupby(["date_id","make_name"]).agg({"lead_id":"nunique","partner_id":"nunique"}).reset_index()
     new_c.columns=["date_id","make_name","unique_leads","unique_partners"]
     return new_c """
+
+#Actors and directors
+#https://leetcode.com/problems/actors-and-directors-who-cooperated-at-least-three-times/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+""" 
+import pandas as pd
+
+def actors_and_directors(actor_director: pd.DataFrame) -> pd.DataFrame:
+    new_df=actor_director.groupby(["actor_id","director_id"])["timestamp"].count().reset_index()
+    return new_df[new_df["timestamp"]>=3][["actor_id","director_id"]] """
+
+#Replace employee ID
+#https://leetcode.com/problems/replace-employee-id-with-the-unique-identifier/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+""" 
+import pandas as pd
+
+def replace_employee_id(employees: pd.DataFrame, employee_uni: pd.DataFrame) -> pd.DataFrame:
+    new_df=employees.merge(employee_uni,how="left",on="id")
+    return new_df[["unique_id","name"]] """
+
