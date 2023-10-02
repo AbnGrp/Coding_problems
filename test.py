@@ -325,3 +325,29 @@ def replace_employee_id(employees: pd.DataFrame, employee_uni: pd.DataFrame) -> 
     ).fillna(0)[
         ['student_id', 'student_name', 'subject_name', 'attended_exams']
     ] """
+
+#Sales person
+#https://leetcode.com/problems/sales-person/description/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+
+#Partial solution
+""" 
+import pandas as pd
+
+def sales_person(sales_person: pd.DataFrame, company: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    new_df=orders.merge(sales_person,how="inner",on="sales_id")
+    return sales_person[~(sales_person["name"].isin(new_df[new_df["com_id"]==1]["name"]))][["name"]] """
+
+#Solution
+
+""" import pandas as pd
+
+def sales_person(sales_person: pd.DataFrame, company: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+    intermediate_merge = sales_person.merge(right=orders, how="outer", on="sales_id")
+
+    final_merge = intermediate_merge.merge(right=company, how="left", on="com_id")
+
+    red = final_merge[final_merge["name_y"] == "RED"][["name_x"]]
+
+    non_red = sales_person[["name"]].merge(right=red, how="outer", left_on="name", right_on="name_x", indicator=True)
+
+    return non_red[non_red["_merge"] == "left_only"][["name"]] """
