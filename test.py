@@ -351,3 +351,24 @@ def sales_person(sales_person: pd.DataFrame, company: pd.DataFrame, orders: pd.D
     non_red = sales_person[["name"]].merge(right=red, how="outer", left_on="name", right_on="name_x", indicator=True)
 
     return non_red[non_red["_merge"] == "left_only"][["name"]] """
+
+#Combine two tables
+#https://leetcode.com/problems/combine-two-tables/description/?lang=pythondata
+
+""" import pandas as pd
+
+def combine_two_tables(person: pd.DataFrame, address: pd.DataFrame) -> pd.DataFrame:
+    new_df=person.merge(address,how="left",on="personId")
+    return new_df[["firstName","lastName","city","state"]] """
+
+#Duplicate emails
+#https://leetcode.com/problems/duplicate-emails/description/?lang=pythondata
+
+""" import pandas as pd
+
+def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
+   results = pd.DataFrame()
+
+   results = person.loc[person.duplicated(subset=['email']), ['email']]
+    
+   return results.drop_duplicates() """
