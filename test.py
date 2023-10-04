@@ -372,3 +372,20 @@ def duplicate_emails(person: pd.DataFrame) -> pd.DataFrame:
    results = person.loc[person.duplicated(subset=['email']), ['email']]
     
    return results.drop_duplicates() """
+
+#Triangle judgement
+#https://leetcode.com/problems/triangle-judgement/
+
+""" import pandas as pd
+import numpy as np
+
+def triangle_judgement(triangle: pd.DataFrame) -> pd.DataFrame:
+    x = triangle["x"].values
+    y = triangle["y"].values
+    z = triangle["z"].values
+
+    conditions = np.logical_or(np.logical_or(x + y <= z, x + z <= y), y + z <= x)
+    triangle["triangle"] = np.where(conditions, "No", "Yes")
+
+    return triangle """
+
