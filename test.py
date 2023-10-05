@@ -1,3 +1,127 @@
+#Pandas basics
+
+#Get the size of a dataframe
+#https://leetcode.com/problems/get-the-size-of-a-dataframe/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def getDataframeSize(players: pd.DataFrame) -> List[int]:
+    return list(players.shape)
+ """
+
+#Display the first three rows
+#https://leetcode.com/problems/display-the-first-three-rows/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def selectFirstRows(employees: pd.DataFrame) -> pd.DataFrame:
+    return employees.head(3) """
+
+#Select data
+#https://leetcode.com/problems/select-data/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def selectData(students: pd.DataFrame) -> pd.DataFrame:
+    flt=students["student_id"]==101
+    return students[flt][["name","age"]] """
+
+#Create a new column
+#https://leetcode.com/problems/create-a-new-column/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def createBonusColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees["bonus"]=employees["salary"]*2
+    return employees """
+
+#Data cleaning
+#https://leetcode.com/problems/drop-duplicate-rows/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def dropDuplicateEmails(customers: pd.DataFrame) -> pd.DataFrame:
+    return customers.drop_duplicates(subset=["email"],keep="first") """
+
+#Drop missing data
+#https://leetcode.com/problems/drop-missing-data/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+""" 
+import pandas as pd
+
+def dropMissingData(students: pd.DataFrame) -> pd.DataFrame:
+    return students.dropna() """
+
+#Modify columns
+#https://leetcode.com/problems/modify-columns/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def modifySalaryColumn(employees: pd.DataFrame) -> pd.DataFrame:
+    employees["salary"]=employees["salary"]*2
+    return employees """
+
+#Rename columns
+#https://leetcode.com/problems/rename-columns/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def renameColumns(students: pd.DataFrame) -> pd.DataFrame:
+    students.rename(columns={"id":"student_id","first":"first_name","last":"last_name","age":"age_in_years"},inplace=True)
+    return students """
+
+#Change datatype
+#https://leetcode.com/problems/change-data-type/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def changeDatatype(students: pd.DataFrame) -> pd.DataFrame:
+    students["grade"]=students["grade"].astype("int")
+    return students """
+
+#Fill missing data
+#https://leetcode.com/problems/fill-missing-data/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def fillMissingValues(products: pd.DataFrame) -> pd.DataFrame:
+    products["quantity"]=products["quantity"].fillna(0)
+    return products """
+
+#Reshape the data
+#https://leetcode.com/problems/reshape-data-concatenate/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def concatenateTables(df1: pd.DataFrame, df2: pd.DataFrame) -> pd.DataFrame:
+    vertical_df=pd.concat([df1,df2],axis=0)
+    return vertical_df """
+
+#Pivot
+#https://leetcode.com/problems/reshape-data-pivot/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def pivotTable(weather: pd.DataFrame) -> pd.DataFrame:
+    return weather.pivot(index='month', columns='city', values='temperature') """
+
+#Melt
+#https://leetcode.com/problems/reshape-data-melt/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+
+""" import pandas as pd
+
+def meltTable(report: pd.DataFrame) -> pd.DataFrame:
+    return pd.melt(report, id_vars = 'product', var_name = "quarter", value_name = "sales") """
+
+#Method chaining
+#https://leetcode.com/problems/method-chaining/description/?envType=study-plan-v2&envId=introduction-to-pandas&lang=pythondata
+""" 
+import pandas as pd
+
+def findHeavyAnimals(animals: pd.DataFrame) -> pd.DataFrame:
+    animals=animals.sort_values(by=["weight"],ascending=False)
+    flt=animals["weight"]>100
+    return animals[flt][["name"]] """
+
 #Find the  employees that are earning more than their managers
 #https://leetcode.com/problems/employees-earning-more-than-their-managers/description/?lang=pythondata
 
@@ -388,4 +512,5 @@ def triangle_judgement(triangle: pd.DataFrame) -> pd.DataFrame:
     triangle["triangle"] = np.where(conditions, "No", "Yes")
 
     return triangle """
+
 
