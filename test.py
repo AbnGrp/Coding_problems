@@ -524,3 +524,16 @@ def top_travellers(users: pd.DataFrame, rides: pd.DataFrame) -> pd.DataFrame:
     new_df.rename(columns={"distance":"travelled_distance"},inplace=True)
     new_df.sort_values(by=["travelled_distance","name"],ascending=[False,True],inplace=True)
     return new_df.fillna(0)[["name","travelled_distance"]] """
+
+#List the products ordered in a period
+#https://leetcode.com/problems/list-the-products-ordered-in-a-period/description/
+
+""" import pandas as pd
+
+def list_products(products: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
+
+    new_orders=orders[(orders["order_date"].dt.month==2)&(orders["order_date"].dt.year==2020)]
+    new_orders.drop(columns=["order_date"],inplace=True)
+    new_df=new_orders.groupby("product_id")["unit"].sum().reset_index()
+    f_df=products.merge(new_df,how="inner",on="product_id")
+    return f_df[f_df["unit"]>=100][["product_name","unit"]] """
