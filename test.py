@@ -537,3 +537,15 @@ def list_products(products: pd.DataFrame, orders: pd.DataFrame) -> pd.DataFrame:
     new_df=new_orders.groupby("product_id")["unit"].sum().reset_index()
     f_df=products.merge(new_df,how="inner",on="product_id")
     return f_df[f_df["unit"]>=100][["product_name","unit"]] """
+
+#Number of employes under the same manager
+#https://leetcode.com/problems/the-number-of-employees-which-report-to-each-employee/
+
+""" import pandas as pd
+def list_products(employees: pd.DataFrame) -> pd.DataFrame:
+ 
+    new_df=employees.merge(employees,how="inner",left_on="employee_id",right_on="reports_to")
+    f_df=new_df.groupby(["employee_id","name"]).agg({"reports_to_x":"count","age_x":"mean"})
+    f_df.rename(columns={"reports_to":"reports_count","age":"average_age"},inplace=True)
+    return f_df """
+
