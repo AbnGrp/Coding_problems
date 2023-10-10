@@ -549,3 +549,11 @@ def list_products(employees: pd.DataFrame) -> pd.DataFrame:
     f_df.rename(columns={"reports_to":"reports_count","age":"average_age"},inplace=True)
     return f_df """
 
+#Employees with missing information
+#https://leetcode.com/problems/employees-with-missing-information/description/
+
+""" import pandas as pd
+
+def find_employees(employees: pd.DataFrame, salaries: pd.DataFrame) -> pd.DataFrame:
+    new_df=employees.merge(salaries,how="outer",on="employee_id")
+    return new_df[new_df.isna().any(axis=1)][["employee_id"]].sort_values(by="employee_id") """
