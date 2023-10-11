@@ -557,3 +557,10 @@ def list_products(employees: pd.DataFrame) -> pd.DataFrame:
 def find_employees(employees: pd.DataFrame, salaries: pd.DataFrame) -> pd.DataFrame:
     new_df=employees.merge(salaries,how="outer",on="employee_id")
     return new_df[new_df.isna().any(axis=1)][["employee_id"]].sort_values(by="employee_id") """
+
+#Employees whose manager left the company
+#https://leetcode.com/problems/employees-whose-manager-left-the-company/description/
+
+""" df = employees[employees['salary']<30000].dropna(subset='manager_id')
+    return df[~df['manager_id'].isin(employees['employee_id'])][['employee_id']].sort_values('employee_id')
+ """
