@@ -564,3 +564,22 @@ def find_employees(employees: pd.DataFrame, salaries: pd.DataFrame) -> pd.DataFr
 """ df = employees[employees['salary']<30000].dropna(subset='manager_id')
     return df[~df['manager_id'].isin(employees['employee_id'])][['employee_id']].sort_values('employee_id')
  """
+
+#Medium problems
+
+#Second highest salary
+#https://leetcode.com/problems/second-highest-salary/
+""" 
+import pandas as pd
+
+def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
+    unique_salaries = employee['salary'].drop_duplicates()
+
+    second_highest = unique_salaries.nlargest(2).iloc[-1] if len(unique_salaries) >= 2 else None
+
+    if second_highest is None:
+        return pd.DataFrame({'SecondHighestSalary': [None]})
+
+    result_df = pd.DataFrame({'SecondHighestSalary': [second_highest]})
+
+    return result_df """
