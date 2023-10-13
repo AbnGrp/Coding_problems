@@ -586,9 +586,9 @@ def second_highest_salary(employee: pd.DataFrame) -> pd.DataFrame:
 
 #Department highest salary
 #https://leetcode.com/problems/department-highest-salary/
-
-import pandas as pd
 """ 
+import pandas as pd
+
 def department_highest_salary(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
     if employee.empty or department.empty:
         return pd.DataFrame(columns=['Department','Employee', 'Salary'])
