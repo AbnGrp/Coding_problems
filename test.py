@@ -615,3 +615,14 @@ def find_investments(insurance: pd.DataFrame) -> pd.DataFrame:
     not_uniq_tiv_2015 = insurance.loc[insurance.duplicated(subset = 'tiv_2015', keep=False)].pid
     df = insurance.loc[insurance.pid.isin(uniq_lat_lon) & insurance.pid.isin(not_uniq_tiv_2015)]
     return df[['tiv_2016']].sum().to_frame('tiv_2016').round(2) """
+
+#https://leetcode.com/problems/rank-scores/description/
+#Ranking scores
+
+""" import pandas as pd
+
+def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
+    scores=scores.sort_values(by=["score"],ascending=False)
+    scores["rank"]=scores["score"].rank(method="dense",ascending=False)
+    scores["rank"]=scores["rank"].astype("int64")
+    return scores[["score","rank"]] """
