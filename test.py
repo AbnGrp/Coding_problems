@@ -626,3 +626,18 @@ def order_scores(scores: pd.DataFrame) -> pd.DataFrame:
     scores["rank"]=scores["score"].rank(method="dense",ascending=False)
     scores["rank"]=scores["rank"].astype("int64")
     return scores[["score","rank"]] """
+
+#https://leetcode.com/problems/capital-gainloss/
+#Capital gain/loss
+
+""" import pandas as pd
+
+def capital_gainloss(stocks: pd.DataFrame) -> pd.DataFrame:
+    buy_df=stocks[stocks["operation"]=="Buy"]
+    buy_df.rename(columns={"price":"buy_price"},inplace=True)
+    sell_df=stocks[stocks["operation"]=="Sell"]
+    sell_df.rename(columns={"price":"sell_price"},inplace=True)
+    f_df=sell_df.merge(buy_df,how="inner",on="stock_name")
+    f_df["capital_gain_loss"]=f_df["price_x"]-f_df["price_y"]
+    return f_df.groupby("stock_name")["capital_gain_loss"].sum().reset_index() """
+
