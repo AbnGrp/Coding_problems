@@ -641,3 +641,22 @@ def capital_gainloss(stocks: pd.DataFrame) -> pd.DataFrame:
     f_df["capital_gain_loss"]=f_df["price_x"]-f_df["price_y"]
     return f_df.groupby("stock_name")["capital_gain_loss"].sum().reset_index() """
 
+#Tree node
+#https://leetcode.com/problems/tree-node/
+
+""" import pandas as pd
+
+def tree_node(tree: pd.DataFrame) -> pd.DataFrame:
+    l=list(tree["id"].isin(tree["p_id"]))
+    l2=list(tree["p_id"].isna())
+    l3=list(zip(l,l2))
+    l4=[]
+    for t in l3:
+        if t[1]==True:
+            l4.append("Root")
+        elif t[0]==True:
+            l4.append("Inner")
+        else:
+            l4.append("Leaf")
+    tree["type"]=pd.Series(l4)
+    return tree[["id","type"]] """
