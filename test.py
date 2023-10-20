@@ -660,3 +660,22 @@ def tree_node(tree: pd.DataFrame) -> pd.DataFrame:
             l4.append("Leaf")
     tree["type"]=pd.Series(l4)
     return tree[["id","type"]] """
+
+#https://leetcode.com/problems/movie-rating/
+#Movie rating
+
+""" import pandas as pd
+
+def movie_rating(movies: pd.DataFrame, users: pd.DataFrame, movie_rating: pd.DataFrame) -> pd.DataFrame:
+    #Getting the first result
+    count_ratings=movie_rating.groupby("user_id")["rating"].count().reset_index()
+    f1_df=count_ratings.merge(users,how="inner",on="user_id")
+    f1_df.sort_values(by=["rating","name"],ascending=[False,True],ignore_index=True)
+    #Getting the second result
+    movie_rating["month"]=pd.DatetimeIndex(movie_rating["created_at"]).month
+    new_df=movie_rating[movie_rating["month"]==2]
+    f2_df=new_df.groupby("movie_id")["rating"].mean().reset_index()
+    f2_df=f2_df.merge(movies,how="inner",on="movie_id")
+    f2_df.sort_values(by=["rating","title"],ascending=[False,True],inplace=True,ignore_index=True)
+    final=pd.DataFrame({"results":[f1_df.loc[0,"name"],f2_df.loc[0,"title"]]})
+    return final """
