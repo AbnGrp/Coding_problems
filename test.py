@@ -689,3 +689,32 @@ def restaurant_growth(customer: pd.DataFrame) -> pd.DataFrame:
     df = customer.sort_values("visited_on").groupby("visited_on")[["amount"]].sum()
     df = df.assign(amount = df.rolling("7D").sum(), average_amount = round(df.rolling("7D").sum()/7,2))
     return df.loc[df.index >= df.index.min() + pd.DateOffset(6)].reset_index() """
+
+#https://leetcode.com/problems/consecutive-numbers/
+#Consecutive numbers
+
+#Partial solution (when the dataframe contains only one number with three consecutive app)
+""" import pandas as pd
+
+def consecutive_numbers(logs: pd.DataFrame) -> pd.DataFrame:
+    def consecutiveAppearance(s):
+        counter=1
+        for i in range(len(s)):
+            for j in range(i+1,len(s)):
+                pointer1=s[i]
+                pointer2=s[j]
+                while pointer1==pointer2:
+                    counter=counter+1
+                    if counter==3:
+                        return pointer1
+                    else:pass
+    result=consecutiveAppearance(logs["num"])
+    f_df=pd.DataFrame({"ConsecutiveNums":[result]})
+    return f_df """
+#Solution
+""" import pandas as pd
+
+def consecutive_numbers(logs: pd.DataFrame) -> pd.DataFrame:
+    logs['var'] = logs.num.rolling(window=3).var()
+
+    return pd.DataFrame(data = {'ConsecutiveNums' : logs.query('var == 0').num.unique()}) """
