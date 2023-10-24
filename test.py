@@ -718,3 +718,15 @@ def consecutive_numbers(logs: pd.DataFrame) -> pd.DataFrame:
     logs['var'] = logs.num.rolling(window=3).var()
 
     return pd.DataFrame(data = {'ConsecutiveNums' : logs.query('var == 0').num.unique()}) """
+
+#https://leetcode.com/problems/biggest-single-number/?envType=study-plan-v2&envId=top-sql-50
+#Biggest single number
+
+""" import pandas as pd
+
+def biggest_single_number(my_numbers: pd.DataFrame) -> pd.DataFrame:
+    df2=my_numbers.groupby("num").value_counts().reset_index()
+#    df2.rename(columns={0:"cnt"},inplace=True)
+    element=df2[df2["count"]==1].sort_values(by=["num"],ascending=False).iloc[0,0]
+    f_df=pd.DataFrame({"num":[element]})
+    return f_df """
