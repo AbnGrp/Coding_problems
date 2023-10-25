@@ -730,3 +730,15 @@ def biggest_single_number(my_numbers: pd.DataFrame) -> pd.DataFrame:
     element=df2[df2["count"]==1].sort_values(by=["num"],ascending=False).iloc[0,0]
     f_df=pd.DataFrame({"num":[element]})
     return f_df """
+
+#https://leetcode.com/problems/count-salary-categories/?envType=study-plan-v2&envId=top-sql-50
+#Salary categories
+
+""" import pandas as pd
+
+def count_salary_categories(accounts: pd.DataFrame) -> pd.DataFrame:
+    low=accounts[accounts["income"]<20000]["income"].count()
+    average=accounts[(accounts["income"]>=20000)&(accounts["income"]<=50000)]["income"].count()
+    high=accounts[accounts["income"]>50000]["income"].count()
+    f_df=pd.DataFrame({"category":["Low Salary","Average Salary","High Salary"],"accounts_count":[low,average,high]})
+    return f_df """
