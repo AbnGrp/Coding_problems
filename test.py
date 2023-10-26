@@ -742,3 +742,15 @@ def count_salary_categories(accounts: pd.DataFrame) -> pd.DataFrame:
     high=accounts[accounts["income"]>50000]["income"].count()
     f_df=pd.DataFrame({"category":["Low Salary","Average Salary","High Salary"],"accounts_count":[low,average,high]})
     return f_df """
+
+#https://leetcode.com/problems/department-top-three-salaries/?envType=study-plan-v2&envId=top-sql-50
+#Department top three salaries
+
+""" import pandas as pd
+
+def top_three_salaries(employee: pd.DataFrame, department: pd.DataFrame) -> pd.DataFrame:
+    employee.sort_values(by=["departmentId","salary"],inplace=True,ignore_index=True,ascending=[True,False])
+    employee["sal_rnk"]=employee.groupby("departmentId")["salary"].rank(method="dense",ascending=False)
+    f_df=employee[employee["sal_rnk"].isin([1,2,3])]
+    f_df=f_df.merge(department,how="inner",left_on="departmentId",right_on="id")
+    return f_df[["department","name","salary"]] """
