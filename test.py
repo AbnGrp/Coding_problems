@@ -754,3 +754,38 @@ def top_three_salaries(employee: pd.DataFrame, department: pd.DataFrame) -> pd.D
     f_df=employee[employee["sal_rnk"].isin([1,2,3])]
     f_df=f_df.merge(department,how="inner",left_on="departmentId",right_on="id")
     return f_df[["department","name","salary"]] """
+
+#https://leetcode.com/problems/human-traffic-of-stadium/
+#Humman traffic on stadium
+
+#Partial solution
+
+""" import pandas as pd
+
+def human_traffic(stadium: pd.DataFrame) -> pd.DataFrame:
+    def consecutive_numbers(s):
+        idx=[]
+        i=0
+        for n in s:
+            if n>100:
+                idx.append(s.index(n))
+                i=i+1
+            else:
+                idx=[]
+                i=0
+        if i>=3:
+            return idx
+        else:
+            idx=[]
+            return idx
+    l=consecutive_numbers(stadium["people"].to_list())
+    l2=[val+1 for val in l]
+    return stadium[stadium["id"].isin(l2)] """
+
+#Solution
+
+""" import pandas as pd
+
+def human_traffic(stadium: pd.DataFrame) -> pd.DataFrame:
+    D=stadium.sort_values("id").query("people>=100").reset_index(drop=1)
+    return D.assign(c=D.groupby(D.id-D.index).id.transform("size")).query("c>2").iloc[:,:3] """
