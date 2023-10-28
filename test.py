@@ -789,3 +789,25 @@ def human_traffic(stadium: pd.DataFrame) -> pd.DataFrame:
 def human_traffic(stadium: pd.DataFrame) -> pd.DataFrame:
     D=stadium.sort_values("id").query("people>=100").reset_index(drop=1)
     return D.assign(c=D.groupby(D.id-D.index).id.transform("size")).query("c>2").iloc[:,:3] """
+
+#https://leetcode.com/problems/trips-and-users/description/
+#Trips and users
+
+""" import pandas as pd
+
+def trips_and_users(trips: pd.DataFrame, users: pd.DataFrame) -> pd.DataFrame:
+    users = users[users.banned == 'No']
+    trips = trips[trips.request_at
+                     .between('2013-10-01','2013-10-03')
+                    ].rename(columns = {'request_at': 'Day'})
+
+    trips['can'] = trips.status.str.startswith('can')
+
+    trips = trips[(trips.client_id.isin(users.users_id)) &
+                  (trips.driver_id.isin(users.users_id))
+                  ].groupby('Day')['can'].agg(['sum','size']).reset_index()
+
+    trips['Cancellation Rate'] = (trips['sum']/trips['size']).round(2)
+    
+    return trips[['Day','Cancellation Rate']] """
+
