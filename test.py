@@ -811,3 +811,28 @@ def trips_and_users(trips: pd.DataFrame, users: pd.DataFrame) -> pd.DataFrame:
     
     return trips[['Day','Cancellation Rate']] """
 
+#https://leetcode.com/problems/managers-with-at-least-5-direct-reports/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+#Manager with at least 5 direct reports
+
+""" import pandas as pd
+
+def find_managers(employee: pd.DataFrame) -> pd.DataFrame:
+    new_df=employee.groupby("managerId")["department"].count().reset_index()
+    f_df=new_df[new_df["department"]>=5]
+    return employee[employee["id"].isin(f_df["managerId"])][["name"]] """
+
+#https://leetcode.com/problems/nth-highest-salary/?envType=study-plan-v2&envId=30-days-of-pandas&lang=pythondata
+#Nth highest salary
+
+""" import pandas as pd
+
+def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
+    employee.sort_values(by=["salary"],inplace=True,ascending=False,ignore_index=True)
+    employee.drop_duplicates(subset="salary",inplace=True,ignore_index=True,keep="first")
+    if N>len(employee):
+        f_df=pd.DataFrame({f"getNthHighestSalary({N})":[None]})
+        return f_df
+    else:
+        nth_val=employee.loc[N-1,"salary"]
+        f_df=pd.DataFrame({f"getNthHighestSalary({N})":[nth_val]})
+        return f_df """
