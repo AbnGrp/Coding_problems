@@ -836,3 +836,47 @@ def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
         nth_val=employee.loc[N-1,"salary"]
         f_df=pd.DataFrame({f"getNthHighestSalary({N})":[nth_val]})
         return f_df """
+
+#https://techtfq.com/blog/practice-writing-sql-queries-using-real-dataset
+
+""" import pandas as pd
+
+#Problem_1
+#How many olympic games have been held?
+
+#df["Games"].isna().sum() (No null values for this series)
+len(df["Games"]) #This is the number of olimpic games that have been held
+
+#Problem_2
+#List down all the olympic games that have been held so far
+
+df["Games"]
+
+#Problem_3
+#Mention the total number of nations that participate in each olympic game
+
+#df.sort_values(by=["Games"]).head(5)
+
+f_df=df.groupby("Games")["Team"].count().reset_index()
+f_df
+
+#Problem_4
+#Which year saw the greatest and lowest number of countries participating in olympics?
+
+f_df[f_df["Team"]==f_df["Team"].max()]["Games"]
+f_df[f_df["Team"]==f_df["Team"].min()]["Games"]
+
+#Problem_5
+#Which nation has participated in all the olympic games?
+
+df.groupby("Team")["Games"].count().reset_index().sort_values(by=["Games"],ascending=False)
+#No one has been in all olympic games
+
+#Problem_6
+#Identify the sport that was played in all summer olympics
+
+len(df[df["Season"]=="Summer"])
+n_df=df[df["Season"]=="Summer"].groupby("Sport")["ID"].count().reset_index()
+n_df.sort_values(by=["ID"],ascending=False,inplace=True)
+n_df[n_df["ID"]==222552]
+#No sport has been played in all summer olympics """
