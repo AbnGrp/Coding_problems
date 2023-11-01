@@ -844,21 +844,24 @@ def nth_highest_salary(employee: pd.DataFrame, N: int) -> pd.DataFrame:
 #Problem_1
 #How many olympic games have been held?
 
-#df["Games"].isna().sum() (No null values for this series)
-len(df["Games"]) #This is the number of olimpic games that have been held
+len(df.drop_duplicates(subset=["Games"]))
 
 #Problem_2
 #List down all the olympic games that have been held so far
 
-df["Games"]
+df.drop_duplicates(subset=["Games"],keep="first")["Games"]
 
 #Problem_3
 #Mention the total number of nations that participate in each olympic game
 
-#df.sort_values(by=["Games"]).head(5)
-
-f_df=df.groupby("Games")["Team"].count().reset_index()
-f_df
+s=df.drop_duplicates(subset=["Games","Year"],keep="first")["Year"]
+s.dropna()
+new_df=df.groupby("Year")
+l=[]
+for year in s:
+  l.append(new_df.get_group(year).drop_duplicates(subset=["Team"],keep="first")["Team"].count())
+final_df=pd.DataFrame({"year":s,"number_of_nations":l})
+final_df.sort_values(by=["year"],ignore_index=True,inplace=True)
 
 #Problem_4
 #Which year saw the greatest and lowest number of countries participating in olympics?
