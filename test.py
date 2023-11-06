@@ -883,3 +883,12 @@ n_df=df[df["Season"]=="Summer"].groupby("Sport")["ID"].count().reset_index()
 n_df.sort_values(by=["ID"],ascending=False,inplace=True)
 n_df[n_df["ID"]==222552]
 #No sport has been played in all summer olympics """
+
+#Brands (SQL interview question)
+""" 
+df["new_col"]=df.groupby("brand")["amount"].shift(fill_value=0)
+new_df=df[df["year"]>2018]
+new_df["subt"]=df["amount"]-df["new_col"]
+f_df=new_df[new_df["subt"]>0]
+final=f_df.groupby("brand")["subt"].count().reset_index()
+final[final["subt"]==(max(df["year"]-min(df["year"])))] """
