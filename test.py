@@ -892,3 +892,16 @@ new_df["subt"]=df["amount"]-df["new_col"]
 f_df=new_df[new_df["subt"]>0]
 final=f_df.groupby("brand")["subt"].count().reset_index()
 final[final["subt"]==(max(df["year"]-min(df["year"])))] """
+
+#Meaningful message (SQL interview question)
+
+""" import pandas as pd
+
+l=[]
+for i in range(len(df)):
+  if df.loc[i,"translation"]!=None:
+    l.append(df.loc[i,"translation"])
+  else:
+    l.append(df.loc[i,"comment"])
+df["meaningful_message"]=l
+df["meaningful_message"] """
