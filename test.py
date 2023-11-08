@@ -905,3 +905,16 @@ for i in range(len(df)):
     l.append(df.loc[i,"comment"])
 df["meaningful_message"]=l
 df["meaningful_message"] """
+
+#Teams
+""" 
+import pandas as pd
+
+df2=df.copy()
+f_df=df.merge(df2,how="cross")
+f_df.rename(columns={"team_name_x":"team","team_name_y":"opponent"},inplace=True)
+new_df=f_df[f_df["team"]!=f_df["opponent"]][["team","opponent"]]
+new_df2=new_df.copy()
+final_df=pd.concat([new_df,new_df2],ignore_index=True,axis=0)
+final_df.sort_values(by=["team","opponent"],inplace=True)
+ """
