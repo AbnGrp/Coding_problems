@@ -918,3 +918,14 @@ new_df2=new_df.copy()
 final_df=pd.concat([new_df,new_df2],ignore_index=True,axis=0)
 final_df.sort_values(by=["team","opponent"],inplace=True)
  """
+
+#Records
+""" import pandas as pd
+
+df1=source[~(source["id"].isin(target["id"]))]
+df2=source[(source["id"].isin(target["id"]))&(~(source["name"].isin(target["name"])))]
+df3=target[~(target["id"].isin(source["id"]))]
+final_df=pd.concat([df1,df2,df3],axis=0,ignore_index=True)
+final_df.loc[0,"name"]="new in source"
+final_df.loc[1,"name"]="mismatch"
+final_df.loc[2,"name"]="new in target" """
