@@ -929,3 +929,10 @@ final_df=pd.concat([df1,df2,df3],axis=0,ignore_index=True)
 final_df.loc[0,"name"]="new in source"
 final_df.loc[1,"name"]="mismatch"
 final_df.loc[2,"name"]="new in target" """
+
+#Third highest salary
+""" import pandas as pd
+
+df["sal_rnk"]=df["salary"].rank(ascending=False,method="dense")
+df.sort_values(by=["sal_rnk"],inplace=True)
+df[df["sal_rnk"]==3]["salary"].head(1) """
