@@ -936,3 +936,14 @@ final_df.loc[2,"name"]="new in target" """
 df["sal_rnk"]=df["salary"].rank(ascending=False,method="dense")
 df.sort_values(by=["sal_rnk"],inplace=True)
 df[df["sal_rnk"]==3]["salary"].head(1) """
+
+#Party seats won
+""" 
+import pandas as pd
+
+cand_res=results.merge(candidates,how="inner",left_on="candidate_id",right_on="id")
+cand_res.sort_values(by=["cons_id","votes"],ascending=[True,False],inplace=True,ignore_index=True)
+cand_res.drop_duplicates(subset=["cons_id"],keep="first",ignore_index=True,inplace=True)
+final_df=cand_res.groupby("party")["cons_id"].count().reset_index()
+final_df.rename(columns={"cons_id":"party_seats_won"},inplace=True)
+final_df.sort_values(by=["party_seats_won"],ascending=False) """
