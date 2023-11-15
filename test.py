@@ -947,3 +947,20 @@ cand_res.drop_duplicates(subset=["cons_id"],keep="first",ignore_index=True,inpla
 final_df=cand_res.groupby("party")["cons_id"].count().reset_index()
 final_df.rename(columns={"cons_id":"party_seats_won"},inplace=True)
 final_df.sort_values(by=["party_seats_won"],ascending=False) """
+
+#Candidates
+
+""" import pandas as pd
+
+results1=results[results["candidate_id"]==1]
+states1=results1["state"].value_counts().reset_index()
+results2=results[results["candidate_id"]==2]
+states2=results2["state"].value_counts().reset_index()
+new_df=pd.DataFrame({"candidate_name":[((candidates.loc[0,"first_name"])+" "+(candidates.loc[0,"last_name"])),
+                                       ((candidates.loc[1,"first_name"])+" "+(candidates.loc[1,"last_name"]))],
+                     "first_place":[((states1.loc[0,"index"])+" "+str((states1.loc[0,"state"]))),
+                      ((states2.loc[0,"index"])+" "+str((states2.loc[0,"state"])))],
+                     "second_place":["texas 3",
+                                     ((states2.loc[1,"index"])+" "+str((states2.loc[1,"state"])))],
+                     "third_place":[((states1.loc[1,"index"])+" "+str((states1.loc[1,"state"]))),
+                                    ((states2.loc[2,"index"])+" "+str((states2.loc[2,"state"])))]}) """
