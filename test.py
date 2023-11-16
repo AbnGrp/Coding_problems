@@ -964,3 +964,27 @@ new_df=pd.DataFrame({"candidate_name":[((candidates.loc[0,"first_name"])+" "+(ca
                                      ((states2.loc[1,"index"])+" "+str((states2.loc[1,"state"])))],
                      "third_place":[((states1.loc[1,"index"])+" "+str((states1.loc[1,"state"]))),
                                     ((states2.loc[2,"index"])+" "+str((states2.loc[2,"state"])))]}) """
+
+#Age distribution
+
+""" import pandas as pd
+
+df["year"]=df["birth_date"].dt.strftime("%Y")
+l=[]
+for year in df["year"]:
+  l.append(2023-int(year))
+df["age"]=l
+l2=[]
+for age in df["age"]:
+  if age>18 and age<20:
+    l2.append(1)
+  elif age>26 and age<40:
+    l2.append(2)
+  elif age>40:
+    l2.append(3)
+  else:
+    l2.append(0)
+df["age_interval"]=l2
+final_df=df.groupby("age_interval")["employee_id"].count().reset_index()
+final_df.rename(columns={"employee_id":"employee_cnt"},inplace=True)
+final_df["percentage"]=[i/len(df) for i in final_df["employee_cnt"]] """
