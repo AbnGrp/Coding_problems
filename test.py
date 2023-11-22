@@ -988,3 +988,15 @@ df["age_interval"]=l2
 final_df=df.groupby("age_interval")["employee_id"].count().reset_index()
 final_df.rename(columns={"employee_id":"employee_cnt"},inplace=True)
 final_df["percentage"]=[i/len(df) for i in final_df["employee_cnt"]] """
+
+#Movie ranking
+
+""" import pandas as pd
+
+df1=rental.merge(inventory, how="inner",on="inventory_id")
+df2=df1.merge(film_actor, how="inner",on="film_id")
+df3=df2.groupby("actor_id")["film_id"].count().reset_index()
+df4=df3.merge(actor,how="inner",on="actor_id")
+df4["full_name"]=df4["first_name"]+" "+df["last_name"]
+df4.rename(columns={"film_id":"film_count"},inplace=True)
+df[["actor_id","full_name","film_count"]].sort_values(by=["film_count","actor_id"],ascending=[False,True]) """
